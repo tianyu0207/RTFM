@@ -1,4 +1,4 @@
-# MTN-KMIL
-Code for 'Weakly-supervised Video Anomaly Detection with Contrastive Learning of Long and Short-range Temporal Features'
+# RTFM
+Code for 'Weakly-supervised Video Anomaly Detection with Robust Temporal Feature Magnitude Learning'
 
 Code to be released later. 

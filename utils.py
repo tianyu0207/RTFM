@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Aug 27 09:23:03 2018
-
-@author: JingGroup
-"""
 import visdom
 import numpy as np
 import torch

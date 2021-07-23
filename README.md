@@ -4,9 +4,9 @@ This repo contains the Pytorch implementation of our paper:
 >
 > [Yu Tian](https://yutianyt.com/), [Guansong Pang](https://sites.google.com/site/gspangsite/home?authuser=0), Yuanhong Chen, Rajvinder Singh, Johan W. Verjans, [Gustavo Carneiro](https://cs.adelaide.edu.au/~carneiro/).
 
-- __Accepted at ICCV 2021. 
+- **Accepted at ICCV 2021.**  
 
-- __SOTA on 4 benchmarks. Check out [Papers With Code](https://paperswithcode.com/paper/weakly-supervised-video-anomaly-detection) for [Video Anomaly Detection](https://paperswithcode.com/task/anomaly-detection-in-surveillance-videos). 
+- **SOTA on 4 benchmarks.** Check out [**Papers With Code**](https://paperswithcode.com/paper/weakly-supervised-video-anomaly-detection) for [**Video Anomaly Detection**](https://paperswithcode.com/task/anomaly-detection-in-surveillance-videos). 
 
 
 ## Training
@@ -35,7 +35,7 @@ python main.py
 If you find this repo useful for your research, please consider citing our paper:
 
 ```bibtex
-@inproceedings{vangansbeke2020scan,
+@inproceedings{tian2021weakly,
   title={Weakly-supervised Video Anomaly Detection with Robust Temporal Feature Magnitude Learning},
   author={Tian, Yu and Pang, Guansong and Chen, Yuanhong and Singh, Rajvinder and Verjans, Johan W and Carneiro, Gustavo},
   booktitle={Proceedings of the IEEE/CVF international conference on computer vision},

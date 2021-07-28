@@ -49,7 +49,6 @@ for  file in file_list:
         ground_annotation = list(ground_annotation)
         if len(ground_annotation) < num_frame:
             last_frame_label = ground_annotation[-1]
-
             for i in range(len(ground_annotation), num_frame):
                 ground_annotation.append(last_frame_label)
 
@@ -59,25 +58,11 @@ for  file in file_list:
         count += len(ground_annotation)
         gt.extend(ground_annotation)
 
-    index = index +1
+    index = index + 1
     total += count
 
-            # print(annots_idx)
-            # annots = annots.flatten()
-            # ann = list(annots)
-            # ann = np.squeeze(annots)
-            # print(list(annots))
-            # print(ann)
-            # print(annots[0][0])
-
-
 print(abnormal_count)
-        # print('abnormal')
-exit(1)
-output_file = '/home/yu/PycharmProjects/shanghai_tech/list/gt-sh.npy'
-gt = np.array(gt, dtype=float)
-np.save(output_file, gt)
-print(len(gt))
+
 
 
 

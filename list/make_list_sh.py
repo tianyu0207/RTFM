@@ -14,20 +14,15 @@ def get_check_abnormal_list(root_path):
     abnormal_file = os.listdir(abnormal_path)
     print(len(abnormal_file))
     check_anomaly_files = []
+
     for file in abnormal_file:
-        # file = file.split('.')[:-1]
         file = os.path.join(abnormal_path, file)
         new_file = file.split('.')[0].split('/')[-1]
         new_file = os.path.join(root_path, new_file + '_i3d.npy')
         check_anomaly_files.append(new_file)
-
         gt = np.load(file.strip('\n'))
-        # print(gt)
-        count = 0
 
 
-    # features = [t.cpu().detach().numpy() for t in features]
-    # features = np.array(features, dtype=np.float32)
     print(check_anomaly_files)
     return check_anomaly_files
 
@@ -35,12 +30,10 @@ with open('shanghai-i3d-test-10crop.list', 'w+') as f:
     normal = []
     files = sorted(glob.glob(os.path.join(root_path, "*.npy")))
     check_anomaly_files = get_check_abnormal_list(root_path)
-
     count = 0
     for file in files:
         if not file in check_anomaly_files:  # Normal video
             normal.append(file)
-
         else:
             newline = file+'\n'
             f.write(newline)

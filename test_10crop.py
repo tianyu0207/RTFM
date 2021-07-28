@@ -10,18 +10,19 @@ def test(dataloader, model, args, viz, device):
 
         for i, input in enumerate(dataloader):
             input = input.to(device)
-            input = input.permute(0,2,1,3)
+            input = input.permute(0, 2, 1, 3)
             score_abnormal, score_normal, feat_select_abn, feat_select_normal, feat_abn_bottom, feat_select_normal_bottom, logits, \
             scores_nor_bottom, scores_nor_abn_bag, feat_magnitudes = model(inputs=input)
-
             logits = torch.squeeze(logits, 1)
             logits = torch.mean(logits, 0)
-
             sig = logits
-
             pred = torch.cat((pred, sig))
 
-        gt = np.load(args.gt)
+        if args.dataset == 'shanghai':
+            gt = np.load('list/gt-sh.npy')
+        else:
+            gt = np.load('list/gt-ucf.npy')
+
         pred = list(pred.cpu().detach().numpy())
         pred = np.repeat(np.array(pred), 16)
 

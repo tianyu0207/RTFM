@@ -56,7 +56,7 @@ class RTFM_loss(torch.nn.Module):
         self.mae_criterion = SigmoidMAELoss()
         self.criterion = torch.nn.BCELoss()
 
-    def forward(self, score_normal, score_abnormal, nlabel, alabel, feat_n, feat_a, viz,  scores_nor_bottom, scores_nor_abn_bag):
+    def forward(self, score_normal, score_abnormal, nlabel, alabel, feat_n, feat_a):
         label = torch.cat((nlabel, alabel), 0)
         score_abnormal = score_abnormal
         score_normal = score_normal
@@ -69,35 +69,12 @@ class RTFM_loss(torch.nn.Module):
         loss_cls = self.criterion(score, label)  # BCE loss in the score space
 
         loss_abn = torch.abs(self.margin - torch.norm(torch.mean(feat_a, dim=1), p=2, dim=1))
+
         loss_nor = torch.norm(torch.mean(feat_n, dim=1), p=2, dim=1)
 
-        loss_um = torch.mean((loss_abn + loss_nor) ** 2)
+        loss_rtfm = torch.mean((loss_abn + loss_nor) ** 2)
 
-        loss_total = loss_cls + self.alpha * loss_um
-
-        # viz.plot_lines('magnitude loss', (self.alpha * loss_um).item())
-        # viz.plot_lines('classification loss', (loss_cls).item())
-
-        return loss_total
-
-class inner_bag_loss(torch.nn.Module):
-    def __init__(self, alpha,beta, margin):
-        super(inner_bag_loss, self).__init__()
-        self.alpha = alpha
-        self.margin = margin
-        self.beta = beta
-
-    def forward(self, feat_select_normal, feat_select_abn, feat_abn_bottom, feat_normal_bottom, viz):
-
-        loss_act = torch.abs(self.margin - torch.norm(torch.mean(feat_select_abn, dim=1), p=2, dim=1))
-        loss_bkg = torch.norm(torch.mean(feat_abn_bottom, dim=1), p=2, dim=1)
-
-        loss_um = torch.mean((loss_act + loss_bkg) ** 2)
-        high_instance = torch.norm(torch.mean(feat_select_normal, dim=1), p=2, dim=1)
-        low_instance = torch.norm(torch.mean(feat_normal_bottom, dim=1), p=2, dim=1)
-        loss_nor_bag = torch.mean((high_instance - low_instance) ** 2)
-        loss_total = self.alpha * loss_um + self.beta * loss_nor_bag
-        viz.plot_lines('inner loss', (loss_total).item())
+        loss_total = loss_cls + self.alpha * loss_rtfm
 
         return loss_total
 
@@ -111,11 +88,13 @@ def train(nloader, aloader, model, batch_size, optimizer, viz, device):
 
         input = torch.cat((ninput, ainput), 0).to(device)
 
-        score_abnormal, score_normal, feat_select_abn, feat_select_normal, feat_abn_bottom, feat_normal_bottom, scores, scores_nor_bottom, scores_nor_abn_bag,_ = model(input)  # b*32  x 2048
+        score_abnormal, score_normal, feat_select_abn, feat_select_normal, feat_abn_bottom, \
+        feat_normal_bottom, scores, scores_nor_bottom, scores_nor_abn_bag, _ = model(input)  # b*32  x 2048
+
         scores = scores.view(batch_size * 32 * 2, -1)
 
         scores = scores.squeeze()
-        abn_scores = scores[batch_size * 32:]  # uncomment this if you apply sparse to abnormal score only
+        abn_scores = scores[batch_size * 32:]
 
         nlabel = nlabel[0:batch_size]
         alabel = alabel[0:batch_size]
@@ -123,10 +102,10 @@ def train(nloader, aloader, model, batch_size, optimizer, viz, device):
         loss_criterion = RTFM_loss(0.0001, 100)
         loss_sparse = sparsity(abn_scores, batch_size, 8e-3)
         loss_smooth = smooth(abn_scores, 8e-4)
-        cost = loss_criterion(score_normal, score_abnormal, nlabel, alabel, feat_select_normal, feat_select_abn, viz, scores_nor_bottom, scores_nor_abn_bag) + loss_smooth + loss_sparse
+        cost = loss_criterion(score_normal, score_abnormal, nlabel, alabel, feat_select_normal, feat_select_abn) + loss_smooth + loss_sparse
 
         viz.plot_lines('loss', cost.item())
-        viz.plot_lines('smoothnes loss', loss_smooth.item())
+        viz.plot_lines('smooth loss', loss_smooth.item())
         viz.plot_lines('sparsity loss', loss_sparse.item())
         optimizer.zero_grad()
         cost.backward()

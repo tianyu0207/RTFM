@@ -36,6 +36,9 @@ This repo contains the Pytorch implementation of our paper:
 > 
 > [**checkpoint for Ucf-crime**](https://uao365-my.sharepoint.com/:u:/g/personal/a1697106_adelaide_edu_au/Ed0gS0RZ5hFMqVa8LxcO3sYBqFEmzMU5IsvvLWxioTatKw?e=qHEl5Z)
 
+The above features use the resnet50 I3D to extract from this [**repo**](https://github.com/Tushar-N/pytorch-resnet3d).
+
+Follow previous works, we also apply 10-crop augmentations. 
 
 The following files need to be adapted in order to run the code on your own machine:
 - Change the file paths to the download datasets above in `list/shanghai-i3d-test-10crop.list` and `list/shanghai-i3d-train-10crop.list`.

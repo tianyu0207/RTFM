@@ -22,7 +22,8 @@ This repo contains the Pytorch implementation of our paper:
 > [**ShanghaiTech train features on Google dirve**](https://drive.google.com/drive/folders/1z-CQPpVtTyfZyPKZdv2hZ-h2oMF6s8ep?usp=sharing)
 > 
 > [**ShanghaiTech test features on Google dirve**](https://drive.google.com/drive/folders/1L71Qa0gao6aLVhSjL0H-u2khmTRKcmQs?usp=sharing)
-
+> 
+> [**checkpoint for ShanghaiTech**](https://drive.google.com/file/d/1epISwbTZ_LXKfJzfYVIVwnxQ6q49lj5B/view?usp=sharing)
 
 **Extracted I3d features for UCF-Crime dataset**
 

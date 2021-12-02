@@ -31,7 +31,7 @@ This repo contains the Pytorch implementation of our paper:
 > 
 > [**UCF-Crime test i3d onedrive**](https://uao365-my.sharepoint.com/:f:/g/personal/a1697106_adelaide_edu_au/EsmBEpklrShEjTFOWTd5FooBVXbeoDHTTqPZn60Vj3Guhg?e=hvv46w)
 > 
-> [**UCF-Crime train I3d features on Google drive**](https://drive.google.com/drive/folders/1_6FVnHYpThVd2p93wjnbNs9g1ZuaUSTp?usp=sharing)
+> [**UCF-Crime train I3d features on Google drive**](https://drive.google.com/file/d/16LumirTnWOOu8_Uh7fcC7RWpSBFobDUA/view?usp=sharing)
 > 
 > [**UCF-Crime test I3d features on Google drive**](https://drive.google.com/drive/folders/1QCBTDUMBXYU9PonPh1TWnRtpTKOX-fxr?usp=sharing)
 > 

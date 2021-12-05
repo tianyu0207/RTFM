@@ -56,12 +56,11 @@ python main.py
 If you find this repo useful for your research, please consider citing our paper:
 
 ```bibtex
-@inproceedings{tian2021weakly,
+@article{tian2021weakly,
   title={Weakly-supervised Video Anomaly Detection with Robust Temporal Feature Magnitude Learning},
   author={Tian, Yu and Pang, Guansong and Chen, Yuanhong and Singh, Rajvinder and Verjans, Johan W and Carneiro, Gustavo},
-  booktitle={Proceedings of the IEEE/CVF international conference on computer vision},
+  journal={arXiv preprint arXiv:2101.10030},
   year={2021}
 }
-
 ```
 ---

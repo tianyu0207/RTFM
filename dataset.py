@@ -3,7 +3,7 @@ import numpy as np
 from utils import process_feat
 import torch
 from torch.utils.data import DataLoader
-torch.set_default_tensor_type('torch.cuda.FloatTensor')
+torch.set_default_tensor_type('torch.FloatTensor')
 
 
 class Dataset(data.Dataset):

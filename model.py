@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import torch.nn.init as torch_init
-torch.set_default_tensor_type('torch.cuda.FloatTensor')
+torch.set_default_tensor_type('torch.FloatTensor')
 
 def weight_init(m):
     classname = m.__class__.__name__
@@ -228,7 +228,7 @@ class Model(nn.Module):
             abnormal_scores = normal_scores
             abnormal_features = normal_features
 
-        select_idx = torch.ones_like(nfea_magnitudes).cuda()
+        select_idx = torch.ones_like(nfea_magnitudes)
         select_idx = self.drop_out(select_idx)
 
         #######  process abnormal videos -> select top3 feature magnitude  #######
@@ -239,7 +239,7 @@ class Model(nn.Module):
         abnormal_features = abnormal_features.view(n_size, ncrops, t, f)
         abnormal_features = abnormal_features.permute(1, 0, 2,3)
 
-        total_select_abn_feature = torch.zeros(0)
+        total_select_abn_feature = torch.zeros(0, device=inputs.device)
         for abnormal_feature in abnormal_features:
             feat_select_abn = torch.gather(abnormal_feature, 1, idx_abn_feat)   # top 3 features magnitude in abnormal bag
             total_select_abn_feature = torch.cat((total_select_abn_feature, feat_select_abn))
@@ -250,7 +250,7 @@ class Model(nn.Module):
 
         ####### process normal videos -> select top3 feature magnitude #######
 
-        select_idx_normal = torch.ones_like(nfea_magnitudes).cuda()
+        select_idx_normal = torch.ones_like(nfea_magnitudes)
         select_idx_normal = self.drop_out(select_idx_normal)
         nfea_magnitudes_drop = nfea_magnitudes * select_idx_normal
         idx_normal = torch.topk(nfea_magnitudes_drop, k_nor, dim=1)[1]
@@ -259,7 +259,7 @@ class Model(nn.Module):
         normal_features = normal_features.view(n_size, ncrops, t, f)
         normal_features = normal_features.permute(1, 0, 2, 3)
 
-        total_select_nor_feature = torch.zeros(0)
+        total_select_nor_feature = torch.zeros(0, device=inputs.device)
         for nor_fea in normal_features:
             feat_select_normal = torch.gather(nor_fea, 1, idx_normal_feat)  # top 3 features magnitude in normal bag (hard negative)
             total_select_nor_feature = torch.cat((total_select_nor_feature, feat_select_normal))

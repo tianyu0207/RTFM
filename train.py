@@ -1,7 +1,7 @@
 import numpy as np
 import torch
 import torch.nn.functional as F
-torch.set_default_tensor_type('torch.cuda.FloatTensor')
+torch.set_default_tensor_type('torch.FloatTensor')
 from torch.nn import L1Loss
 from torch.nn import MSELoss
 

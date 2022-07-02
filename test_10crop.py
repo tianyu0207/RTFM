@@ -6,7 +6,7 @@ import numpy as np
 def test(dataloader, model, args, viz, device):
     with torch.no_grad():
         model.eval()
-        pred = torch.zeros(0)
+        pred = torch.zeros(0, device=device)
 
         for i, input in enumerate(dataloader):
             input = input.to(device)

@@ -45,8 +45,9 @@ The following files need to be adapted in order to run the code on your own mach
 - Change the file paths to the download datasets above in `list/shanghai-i3d-test-10crop.list` and `list/shanghai-i3d-train-10crop.list`.
 - Feel free to change the hyperparameters in `option.py`
 ### Train and test the RTFM
-After the setup, simply run the following command: 
+After the setup, simply run the following commands: 
 ```shell
+python -m visdom.server
 python main.py
 ```
 

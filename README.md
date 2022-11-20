@@ -27,7 +27,7 @@ This repo contains the Pytorch implementation of our paper:
 
 **Extracted I3d features for UCF-Crime dataset**
 
-> [**UCF-Crime train i3d onedirve**](https://uao365-my.sharepoint.com/:f:/g/personal/a1697106_adelaide_edu_au/ErCr6bjDzzZPstgposv1ttYBudL8UVnap6eHS46fFbooAQ?e=RZsMtA)
+> [**UCF-Crime train i3d onedirve**](https://uao365-my.sharepoint.com/:f:/g/personal/a1697106_adelaide_edu_au/ErCr6bjDzzZPstgposv1ttYBN8jgrb0ykT5rWzy99vxRig?e=TQDch6)
 > 
 > [**UCF-Crime test i3d onedrive**](https://uao365-my.sharepoint.com/:f:/g/personal/a1697106_adelaide_edu_au/EsmBEpklrShEjTFOWTd5FooBVXbeoDHTTqPZn60Vj3Guhg?e=hvv46w)
 > 

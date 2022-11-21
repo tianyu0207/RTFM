@@ -19,9 +19,7 @@ This repo contains the Pytorch implementation of our paper:
 > 
 > [**ShanghaiTech test i3d onedrive**](https://uao365-my.sharepoint.com/:f:/g/personal/a1697106_adelaide_edu_au/EvUUrWqpWqVHrXBzxbzAdD8BGiZBiumWWOaZmQ_AMAkAdg?e=P1rwCg)
 > 
-> [**ShanghaiTech train features on Google dirve**](https://drive.google.com/drive/folders/1z-CQPpVtTyfZyPKZdv2hZ-h2oMF6s8ep?usp=sharing)
-> 
-> [**ShanghaiTech test features on Google dirve**](https://drive.google.com/drive/folders/1L71Qa0gao6aLVhSjL0H-u2khmTRKcmQs?usp=sharing)
+> [**ShanghaiTech features on Google dirve**](https://drive.google.com/file/d/1-w9xsx2FbwFf96A1y1GFcZ3odzdEBves/view?usp=sharing)
 > 
 > [**checkpoint for ShanghaiTech**](https://drive.google.com/file/d/1epISwbTZ_LXKfJzfYVIVwnxQ6q49lj5B/view?usp=sharing)
 
